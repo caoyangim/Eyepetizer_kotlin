@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Eyepetizer</string>
+
+    <!--全局-->
+    <string name="homepage">首页</string>
+    <string name="community">社区</string>
+    <string name="notification">通知</string>
+    <string name="mine">我的</string>
+    <string name="discovery">发现</string>
+    <string name="commend">推荐</string>
+    <string name="daily">日报</string>
+    <string name="follow">关注</string>
+    <string name="push">推送</string>
+    <string name="interaction">互动</string>
+    <string name="inbox">私信</string>
+
+</resources>

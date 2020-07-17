@@ -1,0 +1,17 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Eyepetizer" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+    </style>
+
+
+    <style name="Eyepetizer.SplashActivity">
+        <item name="android:windowBackground">@drawable/bg_splash_background</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+</resources>

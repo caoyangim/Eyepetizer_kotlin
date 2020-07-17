@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="index"
+            type="int" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp">
+
+        <ImageView
+            android:id="@+id/ivHomePage"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@drawable/sel_btn_home_page"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivCommunity"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.cy.applibrary.commonui.view.TypefaceTextView
+            android:id="@+id/tvHomePage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="@string/homepage"
+            android:textColor="@color/sel_bottom_navigation_bar_radio_color"
+            app:layout_constraintTop_toBottomOf="@id/ivHomePage"
+            app:layout_constraintStart_toEndOf="@id/ivHomePage"
+            app:layout_constraintEnd_toStartOf="@id/ivHomePage"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/ivCommunity"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:padding="2dp"
+            android:src="@drawable/sel_btn_community"
+            app:layout_constraintStart_toEndOf="@id/ivHomePage"
+            app:layout_constraintEnd_toStartOf="@id/ivNotification"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.cy.applibrary.commonui.view.TypefaceTextView
+            android:id="@+id/tvCommunity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="@string/community"
+            android:textColor="@color/sel_bottom_navigation_bar_radio_color"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/ivCommunity"
+            app:layout_constraintStart_toEndOf="@id/ivCommunity"
+            app:layout_constraintEnd_toStartOf="@id/ivCommunity" />
+
+
+        <ImageView
+            android:id="@+id/ivNotification"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@drawable/sel_btn_notification"
+            app:layout_constraintStart_toEndOf="@id/tvCommunity"
+            app:layout_constraintEnd_toStartOf="@id/ivMine"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.cy.applibrary.commonui.view.TypefaceTextView
+            android:id="@+id/tvNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="@string/notification"
+            android:textColor="@color/sel_bottom_navigation_bar_radio_color"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/ivNotification"
+            app:layout_constraintStart_toEndOf="@id/ivNotification"
+            app:layout_constraintEnd_toStartOf="@id/ivNotification" />
+
+        <ImageView
+            android:id="@+id/ivMine"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@drawable/sel_btn_mine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivNotification"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.cy.applibrary.commonui.view.TypefaceTextView
+            android:id="@+id/tvMine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="@string/mine"
+            android:textColor="@color/sel_bottom_navigation_bar_radio_color"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/ivMine"
+            app:layout_constraintStart_toEndOf="@id/ivMine"
+            app:layout_constraintEnd_toStartOf="@id/ivMine" />
+
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/btnHomePage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHomePage"
+            app:layout_constraintEnd_toEndOf="@id/ivHomePage"
+            app:layout_constraintStart_toStartOf="@id/ivHomePage"
+            app:layout_constraintTop_toTopOf="@+id/ivHomePage"
+            tools:background="@color/blackAlpha50" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/btnCommunity"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCommunity"
+            app:layout_constraintEnd_toEndOf="@id/ivCommunity"
+            app:layout_constraintStart_toStartOf="@id/ivCommunity"
+            app:layout_constraintTop_toTopOf="@+id/ivCommunity"
+            tools:background="@color/blackAlpha50" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/btnNotification"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNotification"
+            app:layout_constraintEnd_toEndOf="@id/ivNotification"
+            app:layout_constraintStart_toStartOf="@id/ivNotification"
+            app:layout_constraintTop_toTopOf="@+id/ivNotification"
+            tools:background="@color/blackAlpha50" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/btnMine"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvMine"
+            app:layout_constraintEnd_toEndOf="@id/ivMine"
+            app:layout_constraintStart_toStartOf="@id/ivMine"
+            app:layout_constraintTop_toTopOf="@+id/ivMine"
+            tools:background="@color/blackAlpha50" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

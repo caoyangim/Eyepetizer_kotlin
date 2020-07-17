@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cy.eyepetizer" >
+
+    <application
+        android:name=".EyepetizerApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Eyepetizer" >
+
+        <!-- 关于全面屏与刘海，状态栏配置相关 -->
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.4" />
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+
+
+        <activity android:name=".ui.SplashActivity"
+            android:theme="@style/Eyepetizer.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.MainActivity" android:screenOrientation="portrait"/>
+    </application>
+
+</manifest>
