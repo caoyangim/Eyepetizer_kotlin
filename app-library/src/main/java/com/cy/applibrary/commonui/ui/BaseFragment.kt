@@ -23,16 +23,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewStub
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.cy.applibrary.R
 import com.cy.applibrary.commonui.callback.RequestLifecycle
+import com.cy.applibrary.event.MessageEvent
 import com.cy.applibrary.extension.logD
 import com.cy.applibrary.util.ShareUtil
-import com.cy.applibrary.event.MessageEvent
+import com.github.ybq.android.spinkit.SpinKitView
 import com.umeng.analytics.MobclickAgent
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -64,7 +64,7 @@ open class BaseFragment : Fragment(), RequestLifecycle {
     /**
      * Fragment中显示加载等待的控件。
      */
-    protected var loading: ProgressBar? = null
+    protected var loading: SpinKitView? = null
 
     /**
      * 依附的Activity

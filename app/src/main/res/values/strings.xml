@@ -14,4 +14,58 @@
     <string name="interaction">互动</string>
     <string name="inbox">私信</string>
 
+    <!-- 我的 -->
+    <string name="guide_login_tips">点击登录即可评论及发布内容</string>
+    <string name="favorites">收藏</string>
+    <string name="cache">缓存</string>
+    <string name="my_follow">我的关注</string>
+    <string name="watch_record">观看记录</string>
+    <string name="notification_toggle">通知开关</string>
+    <string name="my_badge">我的徽章</string>
+    <string name="feedback">意见反馈</string>
+    <string name="want_contribute">我要投稿</string>
+    <string name="version_show">Version %1$s</string>
+
+    <!-- 社区 -->
+    <string name="release">发布：</string>
+    <string name="release_works_daily">发布你的作品和日常</string>
+    <string name="theme_square">主题创作广场</string>
+    <string name="refresh_commend">刷新推荐</string>
+    <string name="private_letter">私信</string>
+    <string name="choiceness">精选</string>
+    <string name="split_line_two">/</string>
+    <string name="photo_count">%1$d/%2$d</string>
+    <string name="image_size_error">图片尺寸异常</string>
+
+    <!-- 登录 -->
+    <string name="forgot_password">找回密码</string>
+    <string name="login_tips">登录后即可关注作者、\n发表评论、同步收藏视频和播放记录</string>
+    <string name="Input_iphone_or_email_tips">请输入手机号/邮箱地址</string>
+    <string name="input_password_tips">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="user_register">用户注册</string>
+    <string name="author_login">作者登录</string>
+    <string name="login_register_agree_tips">登录或注册即同意开眼</string>
+    <string name="user_service_agreement">用户服务协议</string>
+    <string name="guide_login_tips_two">登录后即可查看评论回复、点赞及关注等通知信息</string>
+    <string name="guide_login_tips_three">别错过重要的信息</string>
+    <string name="guide_login_tips_four">点击登录后可关注主题和作者</string>
+
+    <!-- 搜索 -->
+    <string name="hot_keywords">热搜关键词</string>
+    <string name="input_keywords_tips">请输入搜索关键字</string>
+    <string name="search_own">搜索视频、作者、用户及标签</string>
+
+
+    <!-- 视频详情 -->
+    <string name="pull_down_close_page">下 拉 关 闭 页 面</string>
+    <string name="click_send_comment">点 击 发 表 你 的 评 论</string>
+    <string name="reply_target">回复 @%1$s</string>
+
+    <!--关于-->
+    <string name="about">关于</string>
+    <string name="version">版本</string>
+    <string name="open_source_project_list">开源项目列表</string>
+    <string name="thanks_to">%1$s 的完成离不开以下开源项目的卓越贡献，在此对这些开源项目表示特别感谢。</string>
+
 </resources>

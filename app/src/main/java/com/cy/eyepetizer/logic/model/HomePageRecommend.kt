@@ -1,19 +1,3 @@
-/*
- * Copyright (c) 2020. vipyinzhiwei <vipyinzhiwei@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.cy.eyepetizer.logic.model
 
 /**
@@ -21,7 +5,8 @@ package com.cy.eyepetizer.logic.model
  *
  * @author vipyinzhiwei
  * @since  2020/5/6
- */ 
+ */
+
 data class HomePageRecommend(
     val adExist: Boolean,
     val count: Int,
@@ -39,10 +24,15 @@ data class Item(
 )
 
 data class Data(
+    val icon:String,
+    val titleList:List<String>,
+    val rightText:String,
+    val backgroundImage:String,
     val actionUrl: String,
     val ad: Boolean,
     val adTrack: Any,
     val author: Author,
+    val autoPlay: Boolean,
     val brandWebsiteInfo: Any,
     val campaign: Any,
     val category: String,
@@ -64,12 +54,13 @@ data class Data(
     val id: Int,
     val idx: Int,
     val ifLimitVideo: Boolean,
+    val image: String,
     val itemList: List<ItemX>,
-    val label: Any,
-    val labelList: List<Label>,
+    val label: Label,
+    val labelList: List<LabelX>,
     val lastViewTime: Any,
     val library: String,
-    val playInfo: List<PlayInfoXX>,
+    val playInfo: List<PlayInfoX>,
     val playUrl: String,
     val played: Boolean,
     val playlists: Any,
@@ -81,6 +72,7 @@ data class Data(
     val remark: Any,
     val resourceType: String,
     val searchWeight: Int,
+    val shade: Boolean,
     val shareAdTrack: Any,
     val slogan: Any,
     val src: Any,
@@ -165,16 +157,22 @@ data class ItemX(
 )
 
 data class Label(
+    val card: String,
+    val detail: Any,
+    val text: String
+)
+
+data class LabelX(
     val actionUrl: Any,
     val text: String
 )
 
-data class PlayInfoXX(
+data class PlayInfoX(
     val height: Int,
     val name: String,
     val type: String,
     val url: String,
-    val urlList: List<UrlXX>,
+    val urlList: List<UrlX>,
     val width: Int
 )
 
@@ -232,7 +230,7 @@ data class DataX(
     val date: Long,
     val description: String,
     val descriptionEditor: String,
-    val descriptionPgc: Any,
+    val descriptionPgc: String,
     val duration: Int,
     val favoriteAdTrack: Any,
     val id: Int,
@@ -242,7 +240,7 @@ data class DataX(
     val labelList: List<Any>,
     val lastViewTime: Any,
     val library: String,
-    val playInfo: List<PlayInfo>,
+    val playInfo: List<Any>,
     val playUrl: String,
     val played: Boolean,
     val playlists: Any,
@@ -251,7 +249,7 @@ data class DataX(
     val reallyCollected: Boolean,
     val recallSource: Any,
     val releaseTime: Long,
-    val remark: Any,
+    val remark: String,
     val resourceType: String,
     val searchWeight: Int,
     val shareAdTrack: Any,
@@ -261,7 +259,7 @@ data class DataX(
     val tags: List<Tag>,
     val thumbPlayUrl: Any,
     val title: String,
-    val titlePgc: Any,
+    val titlePgc: String,
     val type: String,
     val waterMarks: Any,
     val webAdTrack: Any,
@@ -296,17 +294,8 @@ data class Cover(
     val blurred: String,
     val detail: String,
     val feed: String,
-    val homepage: String,
+    val homepage: Any,
     val sharing: Any
-)
-
-data class PlayInfo(
-    val height: Int,
-    val name: String,
-    val type: String,
-    val url: String,
-    val urlList: List<Url>,
-    val width: Int
 )
 
 data class Provider(
@@ -349,17 +338,13 @@ data class ShieldX(
     val shielded: Boolean
 )
 
-data class Url(
-    val name: String,
-    val size: Int,
-    val url: String
-)
-
 data class DataXX(
     val adTrack: List<Any>,
     val content: ContentX,
     val dataType: String,
-    val header: HeaderX
+    val header: HeaderX,
+    val url:String,
+    val urls:List<String>
 )
 
 data class ContentX(
@@ -373,7 +358,7 @@ data class ContentX(
 data class HeaderX(
     val actionUrl: String,
     val cover: Any,
-    val description: String,
+    val description: Any,
     val font: Any,
     val icon: String,
     val iconType: String,
@@ -403,7 +388,7 @@ data class DataXXX(
     val date: Long,
     val description: String,
     val descriptionEditor: String,
-    val descriptionPgc: String,
+    val descriptionPgc: Any,
     val duration: Int,
     val favoriteAdTrack: Any,
     val id: Int,
@@ -413,7 +398,7 @@ data class DataXXX(
     val labelList: List<Any>,
     val lastViewTime: Any,
     val library: String,
-    val playInfo: List<PlayInfoX>,
+    val playInfo: List<PlayInfo>,
     val playUrl: String,
     val played: Boolean,
     val playlists: Any,
@@ -426,13 +411,13 @@ data class DataXXX(
     val resourceType: String,
     val searchWeight: Int,
     val shareAdTrack: Any,
-    val slogan: String,
+    val slogan: Any,
     val src: Any,
     val subtitles: List<Any>,
     val tags: List<TagX>,
-    val thumbPlayUrl: String,
+    val thumbPlayUrl: Any,
     val title: String,
-    val titlePgc: String,
+    val titlePgc: Any,
     val type: String,
     val waterMarks: Any,
     val webAdTrack: Any,
@@ -471,12 +456,12 @@ data class CoverXX(
     val sharing: Any
 )
 
-data class PlayInfoX(
+data class PlayInfo(
     val height: Int,
     val name: String,
     val type: String,
     val url: String,
-    val urlList: List<UrlX>,
+    val urlList: List<Url>,
     val width: Int
 )
 
@@ -520,13 +505,13 @@ data class ShieldXX(
     val shielded: Boolean
 )
 
-data class UrlX(
+data class Url(
     val name: String,
     val size: Int,
     val url: String
 )
 
-data class UrlXX(
+data class UrlX(
     val name: String,
     val size: Int,
     val url: String

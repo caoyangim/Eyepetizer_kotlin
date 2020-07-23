@@ -17,6 +17,7 @@
 package com.cy.eyepetizer.logic.network.api
 
 import com.cy.applibrary.network.ServiceCreator
+import com.cy.eyepetizer.logic.model.Daily
 import com.cy.eyepetizer.logic.model.HomePageRecommend
 import retrofit2.Call
 import retrofit2.http.GET
@@ -40,12 +41,11 @@ interface MainPageService {
     */
 /**
      * 首页-日报列表
-     *//*
+     */
 
     @GET
     fun getDaily(@Url url: String): Call<Daily>
 
-    */
 /**
      * 社区-推荐列表
      *//*

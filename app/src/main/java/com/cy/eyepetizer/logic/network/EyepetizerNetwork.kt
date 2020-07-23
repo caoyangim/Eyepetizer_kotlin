@@ -14,6 +14,7 @@ class EyepetizerNetwork {
     private val mainPageService = ServiceCreator.create(MainPageService::class.java)
 
     suspend fun fetchHomePageRecommend(url: String) = mainPageService.getHomePageRecommend(url).await()
+    suspend fun fetchDaily(url:String) = mainPageService.getDaily(url).await()
 
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine { continuation ->
