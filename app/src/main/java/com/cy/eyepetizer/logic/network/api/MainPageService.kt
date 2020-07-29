@@ -18,6 +18,7 @@ package com.cy.eyepetizer.logic.network.api
 
 import com.cy.applibrary.network.ServiceCreator
 import com.cy.eyepetizer.logic.model.Daily
+import com.cy.eyepetizer.logic.model.Discover
 import com.cy.eyepetizer.logic.model.HomePageRecommend
 import retrofit2.Call
 import retrofit2.http.GET
@@ -45,6 +46,9 @@ interface MainPageService {
 
     @GET
     fun getDaily(@Url url: String): Call<Daily>
+
+    @GET
+    fun getDiscover(@Url url: String):Call<Discover>
 
 /**
      * 社区-推荐列表

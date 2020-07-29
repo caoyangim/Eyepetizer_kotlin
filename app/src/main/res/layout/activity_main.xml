@@ -6,18 +6,19 @@
     android:orientation="vertical"
     tools:context=".ui.MainActivity">
 
-    <FrameLayout
+    <fragment
         android:id="@+id/homeActivityFragContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:name="com.cy.eyepetizer.ui.MainFragment"
         android:background="@color/white" />
 
-    <View
+<!--    <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/grayDark" />
 
-    <include layout="@layout/layout_bottom_navigation_bar" />
+    <include layout="@layout/layout_bottom_navigation_bar" />-->
 
 </LinearLayout>

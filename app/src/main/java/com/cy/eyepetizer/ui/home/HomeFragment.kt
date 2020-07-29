@@ -11,6 +11,7 @@ import com.cy.eyepetizer.R
 import com.cy.eyepetizer.logic.model.TabEntity
 import com.cy.eyepetizer.ui.home.commend.CommendFragment
 import com.cy.eyepetizer.ui.home.daily.DailyFragment
+import com.cy.eyepetizer.ui.home.discover.DiscoverFragment
 import com.flyco.tablayout.listener.CustomTabEntity
 
 class HomeFragment : BaseViewPagerFragment() {
@@ -20,7 +21,7 @@ class HomeFragment : BaseViewPagerFragment() {
         add(TabEntity(GlobalUtil.getString(R.string.daily)))
     }
     override val createFragments: Array<Fragment>
-        get() = arrayOf(CommendFragment.newInstance(),CommendFragment.newInstance(), DailyFragment.newInstance())
+        get() = arrayOf(DiscoverFragment.newInstance(),CommendFragment.newInstance(), DailyFragment.newInstance())
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return super.onCreateView(inflater.inflate(R.layout.fragment_home,container,false))

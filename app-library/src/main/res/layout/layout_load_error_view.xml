@@ -20,7 +20,7 @@
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_response_error" />
 
-        <com.cy.applibrary.base.view.TypefaceTextView
+        <com.cy.applibrary.commonui.view.TypefaceTextView
             android:id="@+id/loadErrorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             app:typeface="fzlLTypeface"
             tools:text="加载失败了" />
 
-        <com.cy.applibrary.base.view.TypefaceTextView
+        <com.cy.applibrary.commonui.view.TypefaceTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

@@ -91,11 +91,9 @@ class TextCardViewFooter3ViewHolder(view: View) : RecyclerView.ViewHolder(view) 
     val ivTooterInto3 = view.findViewById<ImageView>(R.id.ivTooterInto3)
 }
 
-/*
-class HorizontalScrollCardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val bannerViewPager: BannerViewPager<Discovery.ItemX, DiscoveryAdapter.HorizontalScrollCardAdapter.ViewHolder> = view.findViewById(R.id.bannerViewPager)
-}
-*/
+/*class HorizontalScrollCardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val bannerViewPager: BannerViewPager<ItemX, DiscoverAdapter.HorizontalScrollCardAdapter.ViewHolder> = view.findViewById(R.id.bannerViewPager)
+}*/
 
 class SpecialSquareCardCollectionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
