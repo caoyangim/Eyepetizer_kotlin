@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="207dp"
     android:background="@color/white"
-    android:orientation="vertical"
-    tools:context=".ui.home.discovery.DiscoveryFragment">
+    android:orientation="vertical">
 
     <com.zhpan.bannerview.BannerViewPager
         android:id="@+id/bannerViewPager"

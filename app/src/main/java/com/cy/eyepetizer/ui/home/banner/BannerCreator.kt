@@ -1,9 +1,9 @@
-package com.cy.applibrary.commonui.ui.banner
+package com.cy.eyepetizer.ui.home.banner
 
-import android.content.Context
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.cy.applibrary.R
+import com.cy.eyepetizer.logic.model.ItemX
 import com.zhpan.bannerview.BannerViewPager
 import com.zhpan.bannerview.utils.BannerUtils
 import com.zhpan.indicator.enums.IndicatorSlideMode
@@ -12,11 +12,10 @@ import com.zhpan.indicator.enums.IndicatorStyle
 object BannerCreator {
 
     fun setDefault(
-        context: Context,
         banner: BannerViewPager<*, *>,
         clickListener: BannerViewPager.OnPageClickListener
     ) {
-        banner as BannerViewPager<String, ImageHolder>
+        banner as BannerViewPager<ItemX, ImageHolder>
         banner.apply {
             setAutoPlay(true)
             adapter = ImageAdapter()

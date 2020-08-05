@@ -9,14 +9,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cy.applibrary.commonui.ui.BaseFragment
 import com.cy.eyepetizer.R
-import com.cy.eyepetizer.ui.home.commend.adapter.CommendAdapter
-import com.scwang.smart.refresh.layout.constant.RefreshState
 import kotlinx.android.synthetic.main.fragment_home_commend.*
 
 class CommendFragment :BaseFragment(){
 
     private val viewModel by lazy { ViewModelProvider(this)[CommendViewModel::class.java] }
-    private lateinit var adapter: CommendAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,11 +27,11 @@ class CommendFragment :BaseFragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        adapter = CommendAdapter(this, viewModel.dataList)
+
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = adapter
+//        recyclerView.adapter = adapter
         refreshLayout.setOnRefreshListener { viewModel.refreshCommend() }
 //        refreshLayout.setOnLoadMoreListener { viewModel.onLoadMore() }
         observal()
@@ -50,34 +48,6 @@ class CommendFragment :BaseFragment(){
 
             loadFinished()
 
-            if (response.itemList.isNullOrEmpty() && viewModel.dataList.isEmpty()) {
-                refreshLayout.closeHeaderOrFooter()
-                return@Observer
-            }
-            if (response.itemList.isNullOrEmpty() && viewModel.dataList.isNotEmpty()) {
-                refreshLayout.finishLoadMoreWithNoMoreData()
-                return@Observer
-            }
-            when (refreshLayout.state) {
-                RefreshState.None, RefreshState.Refreshing -> {
-                    viewModel.dataList.clear()
-                    viewModel.dataList.addAll(response.itemList)
-                    adapter.notifyDataSetChanged()
-                }
-                RefreshState.Loading -> {
-                    val itemCount = viewModel.dataList.size
-                    viewModel.dataList.addAll(response.itemList)
-                    adapter.notifyItemRangeInserted(itemCount, response.itemList.size)
-                }
-                else -> {
-                }
-            }
-            if (response.nextPageUrl.isNullOrEmpty()) {
-                    refreshLayout.finishLoadMoreWithNoMoreData()
-            } else {
-                refreshLayout.closeHeaderOrFooter()
-                refreshLayout.finishRefresh()
-            }
         })
     }
 

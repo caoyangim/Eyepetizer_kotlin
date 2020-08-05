@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="285dp"
     android:orientation="vertical"
-    android:paddingStart="@dimen/listSpaceSize"
-    tools:context=".ui.home.discovery.DiscoveryFragment">
+    android:paddingStart="@dimen/listSpaceSize">
 
     <com.cy.applibrary.commonui.view.TypefaceTextView
         android:id="@+id/tvTitle"

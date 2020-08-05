@@ -6,16 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cy.applibrary.commonui.ui.BaseFragment
-import com.cy.applibrary.commonui.ui.banner.BannerCreator
-import com.cy.applibrary.extension.logI
 import com.cy.eyepetizer.R
-import com.zhpan.bannerview.BannerViewPager
 import kotlinx.android.synthetic.main.fragment_home_commend.refreshLayout
 import kotlinx.android.synthetic.main.fragment_home_divcover.*
 
 class DiscoverFragment :BaseFragment(){
     val viewModel by lazy { ViewModelProvider(this)[DiscoverViewModel::class.java] }
+
+    private lateinit var adapter:DiscoverAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,13 +27,11 @@ class DiscoverFragment :BaseFragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        BannerCreator.setDefault(context!!,banner_view,
-            BannerViewPager.OnPageClickListener { TODO("Not yet implemented") })
-//        adapter = DiscoverAdapter(this, viewModel.dataList)
-       /* val layoutManager = LinearLayoutManager(activity)
+        adapter = DiscoverAdapter()
+        val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
-        recyclerView.setHasFixedSize(true)*/
-//        recyclerView.adapter = adapter
+        recyclerView.setHasFixedSize(true)
+        recyclerView.adapter = adapter
         refreshLayout.setOnRefreshListener { viewModel.refreshDiscover() }
 //        refreshLayout.setOnLoadMoreListener { viewModel.onLoadMore() }
         observal()
@@ -46,12 +45,7 @@ class DiscoverFragment :BaseFragment(){
     private fun observal(){
         viewModel.discoverDatas.observe(viewLifecycleOwner, Observer {response ->
             loadFinished()
-            var data = arrayListOf<String>()
-            for (i in response.itemList[0].data.itemList){
-                data.add(i.data.image)
-            }
-            logI("data",data[0])
-            banner_view.refreshData(data as List<Nothing>?)
+            adapter.addData(response.itemList)
         })
     }
 
