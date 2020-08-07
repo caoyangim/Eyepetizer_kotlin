@@ -17,6 +17,7 @@
 package com.cy.eyepetizer.logic.network.api
 
 import com.cy.applibrary.network.ServiceCreator
+import com.cy.eyepetizer.logic.model.Commend
 import com.cy.eyepetizer.logic.model.Daily
 import com.cy.eyepetizer.logic.model.Discover
 import retrofit2.Call
@@ -35,7 +36,7 @@ interface MainPageService {
      * 首页-推荐列表
      */
     @GET
-    fun getHomePageRecommend(@Url url: String): Call<String>
+    fun getHomePageRecommend(@Url url: String): Call<Commend>
 /*
 
     */

@@ -9,29 +9,36 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cy.applibrary.commonui.ui.BaseFragment
 import com.cy.eyepetizer.R
+import com.cy.eyepetizer.ui.home.recycle.HomeAdapter
+import com.scwang.smart.refresh.layout.constant.RefreshState
 import kotlinx.android.synthetic.main.fragment_home_commend.refreshLayout
 import kotlinx.android.synthetic.main.fragment_home_divcover.*
+
 
 class DiscoverFragment :BaseFragment(){
     val viewModel by lazy { ViewModelProvider(this)[DiscoverViewModel::class.java] }
 
-    private lateinit var adapter:DiscoverAdapter
+    private lateinit var adapter: HomeAdapter
+    private lateinit var footview:View
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        footview = inflater.inflate(R.layout.layout_discover_footer, container, false)
         return super.onCreateView(inflater.inflate(R.layout.fragment_home_divcover,container,false))
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        adapter = DiscoverAdapter()
+        adapter = HomeAdapter()
+        adapter.addFooterView(footview)
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
+        adapter.data = viewModel.dataList
         refreshLayout.setOnRefreshListener { viewModel.refreshDiscover() }
 //        refreshLayout.setOnLoadMoreListener { viewModel.onLoadMore() }
         observal()
@@ -44,8 +51,24 @@ class DiscoverFragment :BaseFragment(){
 
     private fun observal(){
         viewModel.discoverDatas.observe(viewLifecycleOwner, Observer {response ->
-            loadFinished()
-            adapter.addData(response.itemList)
+
+            when (refreshLayout.state) {
+                RefreshState.None -> {
+                    viewModel.dataList.clear()
+                    viewModel.dataList.addAll(response.itemList)
+                    adapter.notifyDataSetChanged()
+                }
+                RefreshState.Refreshing -> {
+                    refreshLayout.finishRefresh()
+                    viewModel.dataList.clear()
+                    viewModel.dataList.addAll(response.itemList)
+                    adapter.notifyDataSetChanged()
+                }
+                else -> {
+                }
+            }
+
+
         })
     }
 

@@ -9,7 +9,9 @@ enum class ItemTypeEnum(val typeId:Int,val type:String?=null,val dataType:String
 
     TEXTCARD_HEADER4(1,"TextCard","header4"),
 
-    TEXTCARD_HEADER5(2,"TextCard","header5"),
+    TEXTCARD_TEXTCARD(2,"TextCard","header5"),
+
+    TEXTCARD_TEXTCARDWITHTAGID(13),
 
     HORIZONTALSCROLLCARD_HORIZONTALSCROLLCARD(3,"horizontalScrollCard","HorizontalScrollCard"),
 
@@ -23,7 +25,15 @@ enum class ItemTypeEnum(val typeId:Int,val type:String?=null,val dataType:String
 
     VIDEOSMALLCARD_VIDEOBEANFORCLIENT(8),
 
-    BRIEFCARD_TAGBRIEFCARD(9);
+    BRIEFCARD_TAGBRIEFCARD(9),
+
+    FOLLOWCARD_FOLLOWCARD(10),
+
+    INFORMATIONCARD_INFORMATIONCARD(11),
+
+    UGCSELECTEDCARDCOLLECTION_ITEMCOLLECTION(14),
+
+    BRIEFCARD_TOPICBRIEFCARD(15);
 
 
     companion object{

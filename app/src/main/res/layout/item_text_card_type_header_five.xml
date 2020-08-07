@@ -6,7 +6,6 @@
     android:layout_height="53dp"
     android:paddingStart="@dimen/listSpaceSize"
     android:paddingEnd="@dimen/listSpaceSize"
-    tools:context=".ui.home.discovery.DiscoveryFragment"
     tools:visibility="visible">
 
     <com.cy.applibrary.commonui.view.TypefaceTextView

@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingStart="@dimen/listSpaceSize"
-    android:paddingEnd="@dimen/listSpaceSize"
-    tools:context=".ui.home.discovery.DiscoveryFragment">
+    android:paddingEnd="@dimen/listSpaceSize">
 
     <ImageView
         android:id="@+id/ivPicture"

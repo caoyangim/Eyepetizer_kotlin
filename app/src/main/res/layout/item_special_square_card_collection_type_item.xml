@@ -5,7 +5,6 @@
     android:layout_width="107dp"
     android:layout_height="107dp"
     android:background="?android:attr/selectableItemBackgroundBorderless"
-    tools:context=".ui.home.discovery.DiscoveryFragment"
     tools:ignore="NewApi">
 
     <ImageView
