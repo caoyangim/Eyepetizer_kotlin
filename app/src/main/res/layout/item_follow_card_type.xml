@@ -52,6 +52,8 @@
     <com.cy.applibrary.commonui.view.TypefaceTextView
         android:id="@+id/tvVideoDuration"
         style="@style/Eyepetizer.VideoDurationTextView"
+        android:layout_width="40dp"
+        android:layout_height="19dp"
         app:layout_constraintBottom_toBottomOf="@id/ivVideo"
         app:layout_constraintEnd_toEndOf="@id/ivVideo"
         tools:text="10:29" />

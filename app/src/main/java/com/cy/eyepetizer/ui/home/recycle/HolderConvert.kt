@@ -27,9 +27,7 @@ class HolderConvert {
         fun convert(holder: DiscoverViewHolder, item: Item){
             val typeid = holder.itemViewType
             when(ItemTypeEnum.getTypeEnum(typeid)){
-                ItemTypeEnum.UNKNOWN -> {
-
-                }
+                ItemTypeEnum.UNKNOWN -> { }
                 ItemTypeEnum.TEXTCARD_HEADER4 -> TODO()
                 ItemTypeEnum.TEXTCARD_TEXTCARD -> {
                     holder.setText(R.id.tvTitle5,item.data.text)
@@ -95,6 +93,7 @@ class HolderConvert {
                         getView<ImageView>(R.id.ivAvatar).load(item.data.header.icon)
                         setText(R.id.tvTitle,item.data.header.title)
                         setText(R.id.tvDescription,item.data.header.description)
+                        setText(R.id.tvVideoDuration,item.data.content.data.duration.conversionVideoDuration())
                         getView<ImageView>(R.id.ivVideo).load(item.data.content.data.cover.feed)
                     }
                 }

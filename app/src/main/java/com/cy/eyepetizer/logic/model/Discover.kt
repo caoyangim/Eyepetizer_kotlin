@@ -233,7 +233,7 @@ data class DataX(
     val labelList: List<Any>,
     val shade: Boolean,
     val title: String,
-
+    val duration :Int,
     val cover: CoverXX,
     val dailyResource: Boolean,
     val nickname: String,
