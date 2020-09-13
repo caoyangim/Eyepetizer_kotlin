@@ -17,9 +17,7 @@
 package com.cy.eyepetizer.logic.network.api
 
 import com.cy.applibrary.network.ServiceCreator
-import com.cy.eyepetizer.logic.model.Commend
-import com.cy.eyepetizer.logic.model.Daily
-import com.cy.eyepetizer.logic.model.Discover
+import com.cy.eyepetizer.logic.model.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Url
@@ -52,27 +50,24 @@ interface MainPageService {
 
 /**
      * 社区-推荐列表
-     *//*
+     */
 
     @GET
     fun getCommunityRecommend(@Url url: String): Call<CommunityRecommend>
 
-    */
 /**
      * 社区-关注列表
-     *//*
+     */
 
     @GET
-    fun gethFollow(@Url url: String): Call<Follow>
+    fun gethFollow(@Url url: String): Call<CommunityFollow>
 
-    */
 /**
      * 通知-推送列表
-     *//*
+     */
 
     @GET
     fun getPushMessage(@Url url: String): Call<PushMessage>
-*/
 
     /**
      * 搜索-热搜关键词

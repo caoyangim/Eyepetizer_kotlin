@@ -29,7 +29,7 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation
  * @param round 圆角，单位dp
  * @param cornerType 圆角角度
  */
-fun ImageView.load(url: String, round: Float = 0f, cornerType: RoundedCornersTransformation.CornerType = RoundedCornersTransformation.CornerType.ALL) {
+fun ImageView.load(url: String?, round: Float = 0f, cornerType: RoundedCornersTransformation.CornerType = RoundedCornersTransformation.CornerType.ALL) {
     if (round == 0f) {
         Glide.with(this.context).load(url).into(this)
     } else {

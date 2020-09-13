@@ -13,12 +13,13 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.FragmentTransaction
 import com.cy.applibrary.R
 import com.cy.applibrary.commonui.ui.BaseFragment
+import com.cy.applibrary.extension.dp2px
 
 
 abstract class BaseBottomFragment:BaseFragment(),View.OnClickListener {
     private val mTabBean = ArrayList<BottomTabBean>()
-    private val mBaseFragment = ArrayList<BaseFragment>()
-    private val mItems = LinkedHashMap<BottomTabBean,BaseFragment>()
+    private val mBaseFragment = ArrayList<BaseFragment?>()
+    private val mItems = LinkedHashMap<BottomTabBean,BaseFragment?>()
 
     private var mCurrentFragment = 0
     private var mIndexFragment = 0
@@ -27,7 +28,7 @@ abstract class BaseBottomFragment:BaseFragment(),View.OnClickListener {
 
     private lateinit var mBottomBar:LinearLayoutCompat
 
-    abstract fun setItems(builder: ItemBuilder):LinkedHashMap<BottomTabBean,BaseFragment>
+    abstract fun setItems(builder: ItemBuilder):LinkedHashMap<BottomTabBean,BaseFragment?>
 
     abstract fun setIndexFragment():Int
 
@@ -65,11 +66,22 @@ abstract class BaseBottomFragment:BaseFragment(),View.OnClickListener {
             val icon = item.getChildAt(0) as ImageView
             val text = item.getChildAt(1) as TextView
             item.apply {
-                tag = i
-                setOnClickListener(this@BaseBottomFragment)
+                if (mTabBean[i].clickListener!=null){
+                    setOnClickListener(mTabBean[i].clickListener)
+                }else{
+                    tag = i
+                    setOnClickListener(this@BaseBottomFragment)
+                }
             }
             icon.setImageResource(mTabBean[i].icon)
-            text.text = mTabBean[i].title
+            if (mTabBean[i].title.isNullOrEmpty()){
+                text.visibility = View.GONE
+                val param = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp2px(50f))
+                icon.layoutParams = param
+            }else{
+                text.text = mTabBean[i].title
+            }
+
             if (i == mIndexFragment){
 //                icon.setBackgroundColor(mClickColor)
                 icon.isSelected = true
@@ -77,7 +89,7 @@ abstract class BaseBottomFragment:BaseFragment(),View.OnClickListener {
             }
         }
         parentFragmentManager.beginTransaction().apply {
-            add(R.id.bottom_bar_fragment_container, mBaseFragment[mIndexFragment])
+            mBaseFragment[mIndexFragment]?.let { add(R.id.bottom_bar_fragment_container, it) }
             commit()
         }
 
@@ -86,7 +98,12 @@ abstract class BaseBottomFragment:BaseFragment(),View.OnClickListener {
     override fun onClick(v: View) {
         val tabIndex = v.tag as Int
         changeColor(tabIndex)
-        switchFragment(tabIndex)
+        if (mBaseFragment[tabIndex] == null){
+
+        }else{
+            switchFragment(tabIndex)
+        }
+
     }
 
     private fun resetColor(){
@@ -117,15 +134,16 @@ abstract class BaseBottomFragment:BaseFragment(),View.OnClickListener {
         val currentFragment = mBaseFragment[mCurrentFragment]
         val transaction: FragmentTransaction = parentFragmentManager
             .beginTransaction()
+        if (targetFragment==null) return
         if (!targetFragment.isAdded) {
             transaction
-                .hide(currentFragment)
+                .hide(currentFragment!!)
                 .add(R.id.bottom_bar_fragment_container, targetFragment)
                 .commit()
             println("还没添加呢")
         } else {
             transaction
-                .hide(currentFragment)
+                .hide(currentFragment!!)
                 .show(targetFragment)
                 .commit()
             println("添加了( ⊙o⊙ )哇")

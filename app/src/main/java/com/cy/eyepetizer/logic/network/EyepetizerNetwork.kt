@@ -16,6 +16,9 @@ class EyepetizerNetwork {
     suspend fun fetchHomePageRecommend(url: String) = mainPageService.getHomePageRecommend(url).await()
     suspend fun fetchDaily(url:String) = mainPageService.getDaily(url).await()
     suspend fun fetchDiscover(url:String) = mainPageService.getDiscover(url).await()
+    suspend fun fetchCommunityCommend(url: String) = mainPageService.getCommunityRecommend(url).await()
+    suspend fun fetchFollow(url:String) = mainPageService.gethFollow(url).await()
+    suspend fun fetchPush(url: String) = mainPageService.getPushMessage(url).await()
 
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine { continuation ->

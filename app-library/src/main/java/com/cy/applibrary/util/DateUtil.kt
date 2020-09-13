@@ -65,7 +65,7 @@ object DateUtil {
                         pastHours = 1
                     }
                     /*return pastHours.toString() + GlobalUtil.getString(R.string.hours_ago)*/
-                    return getDateAndHourMinuteTime(dateMillis)
+                    return "今天 ${getDateAndHourMinuteTime(dateMillis)}"
                 }
                 timePast < WEEK -> {
                     var pastDays = timePast / DAY

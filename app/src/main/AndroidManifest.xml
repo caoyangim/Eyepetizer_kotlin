@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.cy.eyepetizer" >
 
     <application
@@ -9,7 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Eyepetizer" >
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:largeHeap="true"
+        android:theme="@style/Eyepetizer"
+        tools:targetApi="n">
 
         <!-- 关于全面屏与刘海，状态栏配置相关 -->
         <meta-data

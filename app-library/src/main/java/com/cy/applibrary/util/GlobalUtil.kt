@@ -26,12 +26,14 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.provider.Settings
 import android.text.TextUtils
+import android.view.WindowManager
 import com.cy.applibrary.extension.edit
 import com.cy.applibrary.extension.logW
 import com.cy.applibrary.extension.sharedPreferences
 import com.cy.applibrary.global.GlobalKeys
 import com.cy.applibrary.util.storage.MemoryStore
 import java.util.*
+
 
 /**
  * 应用程序全局的通用工具类，功能比较单一，经常被复用的功能，应该封装到此工具类当中，从而给全局代码提供方面的操作。
@@ -56,14 +58,21 @@ object GlobalUtil {
      * @return 当前应用程序的名称。
      */
     val appName: String
-        get() = MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).resources.getString(MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).applicationInfo.labelRes)
+        get() = MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).resources.getString(
+            MemoryStore.Instance.getData<Context>(
+                GlobalKeys.APPLICATION_CONTEXT
+            ).applicationInfo.labelRes
+        )
 
     /**
      * 获取当前应用程序的版本名。
      * @return 当前应用程序的版本名。
      */
     val appVersionName: String
-        get() = MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).packageManager.getPackageInfo(appPackage, 0).versionName
+        get() = MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).packageManager.getPackageInfo(
+            appPackage,
+            0
+        ).versionName
 
     /**
      * 获取当前应用程序的版本号。
@@ -71,9 +80,15 @@ object GlobalUtil {
      */
     val appVersionCode: Long
         get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).packageManager.getPackageInfo(appPackage, 0).longVersionCode
+            MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).packageManager.getPackageInfo(
+                appPackage,
+                0
+            ).longVersionCode
         } else {
-            MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).packageManager.getPackageInfo(appPackage, 0).versionCode.toLong()
+            MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).packageManager.getPackageInfo(
+                appPackage,
+                0
+            ).versionCode.toLong()
         }
 
     /**
@@ -130,7 +145,11 @@ object GlobalUtil {
             val appChannel = getApplicationMetaData("APP_CHANNEL")
             if ("google" != appChannel || "samsung" != appChannel) {
                 try {
-                    deviceId = Settings.Secure.getString(MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).contentResolver, Settings.Secure.ANDROID_ID)
+                    deviceId = Settings.Secure.getString(
+                        MemoryStore.Instance.getData<Context>(
+                            GlobalKeys.APPLICATION_CONTEXT
+                        ).contentResolver, Settings.Secure.ANDROID_ID
+                    )
                 } catch (e: Exception) {
                     logW(TAG, "get android_id with error", e)
                 }
@@ -161,7 +180,9 @@ object GlobalUtil {
      * @return 字符串资源id对应的字符串内容。
      */
     fun getString(resId: Int): String {
-        return MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).resources.getString(resId)
+        return MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).resources.getString(
+            resId
+        )
     }
 
     /**
@@ -172,7 +193,9 @@ object GlobalUtil {
      * @return 字符串资源id对应的字符串内容。
      */
     fun getDimension(resId: Int): Int {
-        return MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).resources.getDimensionPixelOffset(resId)
+        return MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).resources.getDimensionPixelOffset(
+            resId
+        )
     }
 
     /**
@@ -185,7 +208,11 @@ object GlobalUtil {
      * @return 指定资源名的资源id。
      */
     fun getResourceId(name: String, type: String): Int {
-        return MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).resources.getIdentifier(name, type, appPackage)
+        return MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).resources.getIdentifier(
+            name,
+            type,
+            appPackage
+        )
     }
 
     /**
@@ -198,7 +225,8 @@ object GlobalUtil {
         var applicationInfo: ApplicationInfo? = null
         try {
             applicationInfo = MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).packageManager.getApplicationInfo(
-                appPackage, PackageManager.GET_META_DATA)
+                appPackage, PackageManager.GET_META_DATA
+            )
         } catch (e: PackageManager.NameNotFoundException) {
             logW(TAG, e.message, e)
         }
@@ -214,7 +242,10 @@ object GlobalUtil {
      */
     fun isInstalled(packageName: String): Boolean {
         val packageInfo: PackageInfo? = try {
-            MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).packageManager.getPackageInfo(packageName, 0)
+            MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).packageManager.getPackageInfo(
+                packageName,
+                0
+            )
         } catch (e: PackageManager.NameNotFoundException) {
             null
         }
@@ -244,4 +275,11 @@ object GlobalUtil {
      * 判断手机是否安装了微博。
      * */
     fun isWeiboInstalled() = isInstalled("com.sina.weibo")
+
+    fun getWidth():Int{
+        val wm =  MemoryStore.Instance.getData<Context>(GlobalKeys.APPLICATION_CONTEXT).getSystemService(
+            Context.WINDOW_SERVICE
+        ) as WindowManager?
+        return  wm?.defaultDisplay?.width ?: 0
+    }
 }

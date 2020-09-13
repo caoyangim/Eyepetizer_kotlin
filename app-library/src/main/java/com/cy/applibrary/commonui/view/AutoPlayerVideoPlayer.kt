@@ -17,13 +17,17 @@ package com.cy.applibrary.commonui.view
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.cy.applibrary.R
 import com.cy.applibrary.extension.gone
 import com.cy.applibrary.extension.logD
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoView
 import kotlinx.android.synthetic.main.layout_auto_play_video_player.view.*
+
 
 /**
  * 常见列表，视频播放器。
@@ -32,6 +36,8 @@ import kotlinx.android.synthetic.main.layout_auto_play_video_player.view.*
  * @since 2020/5/26
  */
 class AutoPlayerVideoPlayer : StandardGSYVideoPlayer {
+
+    var mCoverImage: ImageView? = null
 
     constructor(context: Context) : super(context)
 
@@ -53,6 +59,16 @@ class AutoPlayerVideoPlayer : StandardGSYVideoPlayer {
         mBrightness = false
     }
 
+    override fun init(context: Context?) {
+        super.init(context)
+        mCoverImage = findViewById<View>(R.id.thumbImage) as ImageView
+        if (mThumbImageViewLayout != null &&
+            (mCurrentState == -1 || mCurrentState == CURRENT_STATE_NORMAL || mCurrentState == CURRENT_STATE_ERROR)
+        ) {
+            mThumbImageViewLayout.visibility = VISIBLE
+        }
+    }
+
     override fun updateStartImage() {
         if (mStartButton is ImageView) {
             val imageView = mStartButton as ImageView
@@ -65,6 +81,20 @@ class AutoPlayerVideoPlayer : StandardGSYVideoPlayer {
             super.updateStartImage()
         }
     }
+
+    fun loadCoverImage(url: String, res: Int) {
+        Glide.with(context.applicationContext)
+            .setDefaultRequestOptions(
+                RequestOptions()
+                    .frame(1000000)
+                    .centerCrop()
+                    .error(res)
+                    .placeholder(res)
+            )
+            .load(url)
+            .into(mCoverImage!!)
+    }
+
 
     override fun touchDoubleUp() {
         //super.touchDoubleUp();
